@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
 import { FormButton } from '../components/Button';
 import {
   Form,
@@ -10,7 +12,6 @@ import {
   Input,
   TextArea,
 } from '../components/Input';
-import styled from 'styled-components';
 
 const Container = styled.div`
   width: 70%;
@@ -43,7 +44,7 @@ const BookSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // FormSubmit
+    axios.post('/mailer/book', formData);
   };
 
   return (
@@ -54,10 +55,54 @@ const BookSection = () => {
           <Form onSubmit={handleSubmit}>
             <PairFields>
               <FieldContainer rightPadding>
+                <Label>Name</Label>
+                <Input
+                  type='text'
+                  name='name'
+                  onChange={handleChange}
+                  required
+                />
+              </FieldContainer>
+
+              <FieldContainer leftPadding>
+                <Label>Email</Label>
+                <Input
+                  type='email'
+                  name='email'
+                  onChange={handleChange}
+                  required
+                />
+              </FieldContainer>
+            </PairFields>
+
+            <PairFields>
+              <FieldContainer rightPadding>
+                <Label>Number of Rooms</Label>
+                <Input
+                  type='number'
+                  name='rooms'
+                  onChange={handleChange}
+                  required
+                />
+              </FieldContainer>
+
+              <FieldContainer leftPadding>
+                <Label>Number of Guests</Label>
+                <Input
+                  type='number'
+                  name='guests'
+                  onChange={handleChange}
+                  required
+                />
+              </FieldContainer>
+            </PairFields>
+
+            <PairFields>
+              <FieldContainer rightPadding>
                 <Label>Arrival Date</Label>
                 <Input
                   type='date'
-                  name='name'
+                  name='arrival'
                   onChange={handleChange}
                   required
                 />
@@ -67,44 +112,12 @@ const BookSection = () => {
                 <Label>Departure Date</Label>
                 <Input
                   type='date'
-                  name='phone'
+                  name='departure'
                   onChange={handleChange}
                   required
                 />
               </FieldContainer>
             </PairFields>
-
-            <PairFields>
-              <FieldContainer rightPadding>
-                <Label>Rooms</Label>
-                <Input
-                  type='number'
-                  name='phone'
-                  onChange={handleChange}
-                  required
-                />
-              </FieldContainer>
-
-              <FieldContainer leftPadding>
-                <Label>Guests</Label>
-                <Input
-                  type='number'
-                  name='phone'
-                  onChange={handleChange}
-                  required
-                />
-              </FieldContainer>
-            </PairFields>
-
-            <FieldContainer>
-              <Label>Email</Label>
-              <Input
-                type='email'
-                name='email'
-                onChange={handleChange}
-                required
-              />
-            </FieldContainer>
 
             <FieldContainer>
               <Label>Write a Note</Label>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
 import { FormButton } from '../components/Button';
 import {
   FormContainer,
@@ -12,7 +14,6 @@ import {
   TextArea,
 } from '../components/Input';
 import Map from '../components/Map';
-import styled from 'styled-components';
 
 const LeftPadding = styled.div`
   padding-left: 2rem;
@@ -31,8 +32,7 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // FormSubmit
+    axios.post('/mailer/message', formData);
   };
 
   return (
