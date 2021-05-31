@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { FormButton } from '../components/Button';
+import SuccessAlert from '../components/SuccessAlert';
 import {
   Form,
   FieldContainer,
@@ -35,7 +36,16 @@ const PairFields = styled.div`
 `;
 
 const BookSection = () => {
-  const [formData, setFormData] = useState({});
+  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    rooms: '',
+    guests: '',
+    arrivalDate: '',
+    departureDate: '',
+    note: '',
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,6 +55,21 @@ const BookSection = () => {
     e.preventDefault();
 
     axios.post('/mailer/book', formData);
+
+    setFormData({
+      name: '',
+      email: '',
+      rooms: '',
+      guests: '',
+      arrivalDate: '',
+      departureDate: '',
+      note: '',
+    });
+
+    setSent(true);
+    setTimeout(() => {
+      setSent(false);
+    }, 5000);
   };
 
   return (
@@ -59,6 +84,7 @@ const BookSection = () => {
                 <Input
                   type='text'
                   name='name'
+                  value={formData.name}
                   onChange={handleChange}
                   required
                 />
@@ -69,6 +95,7 @@ const BookSection = () => {
                 <Input
                   type='email'
                   name='email'
+                  value={formData.email}
                   onChange={handleChange}
                   required
                 />
@@ -81,6 +108,7 @@ const BookSection = () => {
                 <Input
                   type='number'
                   name='rooms'
+                  value={formData.rooms}
                   onChange={handleChange}
                   required
                 />
@@ -91,6 +119,7 @@ const BookSection = () => {
                 <Input
                   type='number'
                   name='guests'
+                  value={formData.guests}
                   onChange={handleChange}
                   required
                 />
@@ -102,7 +131,8 @@ const BookSection = () => {
                 <Label>Arrival Date</Label>
                 <Input
                   type='date'
-                  name='arrival'
+                  name='arrivalDate'
+                  value={formData.arrivalDate}
                   onChange={handleChange}
                   required
                 />
@@ -112,7 +142,8 @@ const BookSection = () => {
                 <Label>Departure Date</Label>
                 <Input
                   type='date'
-                  name='departure'
+                  name='departureDate'
+                  value={formData.departureDate}
                   onChange={handleChange}
                   required
                 />
@@ -121,12 +152,22 @@ const BookSection = () => {
 
             <FieldContainer>
               <Label>Write a Note</Label>
-              <TextArea name='message' onChange={handleChange} required />
+              <TextArea
+                name='note'
+                value={formData.note}
+                onChange={handleChange}
+              />
             </FieldContainer>
 
             <FieldContainer>
               <FormButton primary>RESERVE NOW</FormButton>
             </FieldContainer>
+
+            {sent && (
+              <FieldContainer>
+                <SuccessAlert message='Booking request sent' />
+              </FieldContainer>
+            )}
           </Form>
         </FormCol>
       </FormRow>
