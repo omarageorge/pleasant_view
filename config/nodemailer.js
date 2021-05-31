@@ -18,8 +18,7 @@ const mailMan = (mailSubject, mailMessage) => {
   // Setup email data with unicode symbols
   let mailOptions = {
     from: '"PVH Website" <info@qenvie.com>', // sender
-    // to: 'pleasantviewhotel123@gmail.com',
-    to: 'georgeomara8@gmail.com',
+    to: 'pleasantviewhotel123@gmail.com',
     subject: mailSubject, // Subject line
     html: mailMessage, // html body
   };
