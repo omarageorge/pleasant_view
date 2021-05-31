@@ -10,14 +10,15 @@ const mailMan = (mailSubject, mailMessage) => {
       user: 'info@qenvie.com', // User
       pass: 'Qu@ntum1##', // Password
     },
-    tls: {
-      rejectUnauthorized: false, // Allows you to send emails from a localhost.
-    },
+    // tls: {
+    //   rejectUnauthorized: false, // Allows you to send emails from a localhost.
+    // },
   });
 
   // Setup email data with unicode symbols
   let mailOptions = {
     from: '"PVH Website" <info@qenvie.com>', // sender
+    // to: 'pleasantviewhotel123@gmail.com',
     to: 'georgeomara8@gmail.com',
     subject: mailSubject, // Subject line
     html: mailMessage, // html body

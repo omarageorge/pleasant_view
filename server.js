@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const next = require('next');
 
-const port = process.env.PORT || 5000;
+const port = 3002;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
