@@ -9,7 +9,7 @@
     "dev-old": "next dev",
     "dev": "nodemon server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
