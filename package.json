@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -24,5 +24,8 @@
     "react-icons": "^4.2.0",
     "react-reveal": "^1.2.2",
     "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
