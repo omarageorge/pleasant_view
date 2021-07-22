@@ -101,7 +101,7 @@ const Footer = () => {
             <Label>Connect with us</Label>
             <Text>We are socialized. Follow us</Text>
             <Icons>
-              <SocialMediaLink href='#' target='_blank'>
+              <SocialMediaLink href='https://www.facebook.com/pleasantviewhotel' target='_blank'>
                 <FaFacebook />
               </SocialMediaLink>
               <SocialMediaLink href='#' target='_blank'>
