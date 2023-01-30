@@ -6,9 +6,9 @@
     "styled-components": "^5"
   },
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
     "axios": "^0.21.1",
